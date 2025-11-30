@@ -1,0 +1,11 @@
+[project]
+name = "todo-project"
+version = "0.1.0"
+description = "Django TODO App"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django",
+    "psycopg2-binary",
+    "gunicorn",
+]

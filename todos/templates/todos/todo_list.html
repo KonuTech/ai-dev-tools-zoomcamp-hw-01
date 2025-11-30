@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Todo List</h1>
+    <a href="{% url 'todo-create' %}" class="btn btn-primary">Add Todo</a>
+</div>
+
+<div class="list-group">
+    {% for todo in todos %}
+    <div
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if todo.is_resolved %}list-group-item-success{% endif %}">
+        <div>
+            <h5 class="mb-1">
+                <a href="{% url 'todo-detail' todo.pk %}" class="text-decoration-none text-dark">
+                    {{ todo.title }}
+                </a>
+            </h5>
+            <small class="text-muted">
+                Due: {{ todo.due_date|default:"No date" }}
+            </small>
+        </div>
+        <div>
+            <form action="{% url 'todo-toggle-resolved' todo.pk %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit"
+                    class="btn btn-sm {% if todo.is_resolved %}btn-warning{% else %}btn-success{% endif %}">
+                    {% if todo.is_resolved %}Reopen{% else %}Resolve{% endif %}
+                </button>
+            </form>
+            <a href="{% url 'todo-edit' todo.pk %}" class="btn btn-sm btn-secondary">Edit</a>
+            <a href="{% url 'todo-delete' todo.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No todos yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

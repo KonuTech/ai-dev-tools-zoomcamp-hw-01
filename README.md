@@ -50,7 +50,7 @@ A modern, Docker-first TODO list web application built with Django, PostgreSQL, 
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 ai-dev-tools-zoomcamp-hw-01/
 ├── todo_project/          # Django project configuration
 │   ├── settings.py        # Project settings (DB, apps, middleware)
@@ -85,7 +85,7 @@ ai-dev-tools-zoomcamp-hw-01/
 ├── pyproject.toml         # Python dependencies (uv)
 ├── uv.lock                # Locked dependencies
 └── .env                   # Environment variables (not in git)
-\`\`\`
+```
 
 ## 🚀 Quick Start
 
